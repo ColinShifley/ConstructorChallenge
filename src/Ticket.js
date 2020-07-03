@@ -1,34 +1,40 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-import Order from "./Order";
+
+import Table1 from './Table1';
+
 
 class Ticket extends Component {
-    constructor(protein, drink, side, toppings, directions) {
-        super();
-        this.protein = protein;
-        this.drink = drink;
-        this.side = side;
-        this.toppings = toppings;
-        this.directions = directions;
+    constructor(props) {
+        super(props);
+        this.state = {
+            protein: 'beef',
+            drink: '',
+            side: ''
+        };
+    };
+
+    enterOrder() {
+        console.log('hello i work')
+        this.setState({
+            protein: 'beef',
+            drink: 'Coke',
+            side: 'Broccoli'
+        })
     }
 
-    render() {
-        return (
-            <h2>
-                <Ticket protein={'burger'} drink={'Coke'} side={'broccoli'} toppings={'Onions'}
-                        directions={'Hold pickles'}/>
-            </h2>
-        )
-    }
+        render()
+        {
+            return (
+                <div>
+                    <h2>
+                        <Table1 big={this.state.protein} takeOrder={this.enterOrder}/>
+                    </h2>
+                </div>
+            );
+        }
+    };
 
-}
-class PersonOrder extends Ticket {
-    constructor(protein, drink, side, toppings, directions) {
-        super(protein, drink, side);
-        this.toppings = toppings;
-        this.directions = directions;
-    }
-}
+
 
 export default Ticket;
-export default PersonOrder;
